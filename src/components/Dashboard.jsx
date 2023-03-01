@@ -1,7 +1,8 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 
 function Dashboard() {
-  return <div>Dashboard</div>;
+  return <SearchBar></SearchBar>;
 }
 
 export default Dashboard;
