@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { API_URLS } from "../api/apiConfig";
 import { Link } from "react-router-dom";
+import Player from "./Player";
+
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -36,28 +38,12 @@ export default function SearchBar() {
       <ul className="divide-y divide-gray-300">
         {searchResults.map((track) => (
           <li key={track.id} className="py-4">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <img
-                  className="h-10 w-10 rounded-full"
-                  src={track.album.images[2].url}
-                  alt=""
-                />
-              </div>
-              <div className="ml-4">
-                <div className="text-sm font-medium text-gray-900">
-                  <Link
-                    to={`/player/${track.id}`}
-                    className="text-blue-500 hover:text-blue-700"
-                  >
-                    {track.name}
-                  </Link>
-                </div>
-                <div className="text-sm text-gray-500 cursor-pointer">
-                  {track.artists[0].name}
-                </div>
-              </div>
-            </div>
+            <Player
+              songUrl={track.preview_url}
+              songName={track.name}
+              artistName={track.artists[0].name}
+              albumImageUrl={track.album.images[2].url}
+            />
           </li>
         ))}
       </ul>

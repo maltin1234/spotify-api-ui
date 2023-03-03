@@ -33,7 +33,11 @@ function App() {
         </header>
         <main className="p-4">
           <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
+            {token ? (
+              <Route path="/dashboard" element={<Dashboard />} />
+            ) : (
+              <Route path="/" element={<Login />} />
+            )}
           </Routes>
         </main>
       </div>
